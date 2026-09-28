@@ -18,9 +18,7 @@ const vehicul = {
 	rovinietaExpiraLa: "2026-12-31T00:00:00.000Z",
 	arrExpiraLa: null,
 	arrMonitorizat: false,
-	degraded: false,
-	planLocked: false,
-	abuseLocked: false,
+	activ: true,
 	createdAt: "2026-09-01T08:00:00.000Z",
 	campNouDeLaServer: "ignorat",
 }

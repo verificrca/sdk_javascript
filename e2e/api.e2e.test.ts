@@ -50,6 +50,7 @@ describe.skipIf(!CHEIE)("vehicule.lista (gratuit)", () => {
 		expect(Array.isArray(vehicule)).toBe(true)
 		for (const v of vehicule) {
 			expect(typeof v.id).toBe("string")
+			expect(typeof v.activ).toBe("boolean")
 			expect(v.createdAt).toBeInstanceOf(Date)
 			for (const data of [v.rcaExpiraLa, v.itpExpiraLa, v.rovinietaExpiraLa, v.arrExpiraLa]) {
 				if (data !== null) expect(data).toBeInstanceOf(Date)

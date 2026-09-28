@@ -98,34 +98,10 @@ export const VehiculSchema = Schema.Struct({
 	arrMonitorizat: Schema.Boolean,
 	/** Cand a fost adaugat vehiculul in cont. */
 	createdAt: Schema.Date,
-	/** Inceputul verificarii RCA in curs, `null` cand nu ruleaza niciuna. */
-	verifyingRCAAt: Schema.optional(DataNullabila),
-	/** Inceputul verificarii ITP in curs, `null` cand nu ruleaza niciuna. */
-	verifyingITPAt: Schema.optional(DataNullabila),
-	/** Inceputul verificarii rovinietei in curs, `null` cand nu ruleaza niciuna. */
-	verifyingRovinietaAt: Schema.optional(DataNullabila),
-	/** Inceputul verificarii ARR in curs, `null` cand nu ruleaza niciuna. */
-	verifyingARRAt: Schema.optional(DataNullabila),
-	/** Ultima reverificare RCA ceruta manual din dashboard. */
-	rcaManualRecheckAt: Schema.optional(DataNullabila),
-	/** Ultima reverificare ITP ceruta manual din dashboard. */
-	itpManualRecheckAt: Schema.optional(DataNullabila),
-	/** Ultima reverificare a rovinietei ceruta manual din dashboard. */
-	rovinietaManualRecheckAt: Schema.optional(DataNullabila),
-	/** Ultima reverificare ARR ceruta manual din dashboard. */
-	arrManualRecheckAt: Schema.optional(DataNullabila),
-	/** Vehiculul nu primeste notificari: serviciul nu e platit sau nu e disponibil pentru el. */
-	degraded: Schema.optional(Schema.Boolean),
-	/** Vehiculul depaseste limita de masini a planului: nu mai e verificat si nu primeste notificari. */
-	planLocked: Schema.optional(Schema.Boolean),
-	/** Monitorizarea vehiculului a fost suspendata de verificrca. Contacteaza suportul pentru detalii. */
-	abuseLocked: Schema.optional(Schema.Boolean),
+	/** Vehiculul e verificat automat si primeste notificari de expirare. */
+	activ: Schema.Boolean,
 })
-/**
- * Un vehicul monitorizat din cont, cu datele de expirare ale documentelor.
- * Un vehicul e verificat si notificat doar cand `degraded`, `planLocked` si
- * `abuseLocked` sunt toate `false`.
- */
+/** Un vehicul monitorizat din cont, cu datele de expirare ale documentelor. */
 export type Vehicul = typeof VehiculSchema.Type
 
 export const ListaVehiculeSchema = Schema.Struct({ vehicule: Schema.Array(VehiculSchema) })

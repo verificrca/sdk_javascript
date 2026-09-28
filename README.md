@@ -197,7 +197,7 @@ Face polling până la rezultatul final. Opțiuni: `intervalMs` (implicit 3000, 
 
 ### `vehicule.lista()`
 
-Toate vehiculele din cont, cu datele de expirare `rcaExpiraLa`, `itpExpiraLa`, `rovinietaExpiraLa` și `arrExpiraLa` (ca `Date` sau `null`). Un vehicul e verificat și notificat doar când `degraded`, `planLocked` și `abuseLocked` sunt toate `false`. `planLocked` înseamnă că mașina depășește numărul permis de plan. Vehiculele din cont sunt verificate automat și periodic, deci lista îți dă o imagine la zi a flotei fără să consume din cota de verificări.
+Toate vehiculele din cont, cu datele de expirare `rcaExpiraLa`, `itpExpiraLa`, `rovinietaExpiraLa` și `arrExpiraLa` (ca `Date` sau `null`). Câmpul `activ` e `true` cât timp vehiculul e verificat automat și primește notificări de expirare. Vehiculele din cont sunt verificate automat și periodic, deci lista îți dă o imagine la zi a flotei fără să consume din cota de verificări.
 
 ### `vehicule.adauga({ numarInmatriculare?, serieSasiu?, arrMonitorizat? })`
 
