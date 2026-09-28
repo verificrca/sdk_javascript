@@ -48,13 +48,6 @@ console.log(rca.status, rca.expiresAt) // "valid" 2027-03-01T00:00:00.000Z
 | Erori tipate | O clasă de eroare pentru fiecare situație, cu mesaj în română și `hint` de rezolvare |
 | Reîncercări sigure | Backoff exponențial cu jitter, `Retry-After` respectat, niciun POST taxat de două ori |
 
-Și câteva lucruri practice:
-
-- Scris în TypeScript, cu tipuri complete: `status` e o uniune discriminată și TypeScript îți spune ce câmpuri există în fiecare caz.
-- Datele calendaristice vin ca obiecte `Date`, nu ca stringuri.
-- Funcționează în ESM (`import`) și CommonJS (`require`), pe Node.js 18.17 sau mai nou.
-- Construit intern pe [Effect](https://effect.website) pentru scheme, validare și politica de retry. Tu lucrezi doar cu `async/await`, nu trebuie să știi Effect.
-
 ## Instalare
 
 ```bash
@@ -395,14 +388,6 @@ Asigurătorul are nevoie de timp ca să înregistreze polița nouă în AIDA, de
 ### Merge în browser?
 
 Tehnic da, dar nu trebuie să-l folosești acolo, pentru că ar expune cheia API. Folosește-l pe server (Node.js, Next.js route handlers, funcții serverless) și trimite spre browser doar rezultatul.
-
-### Merge cu CommonJS?
-
-Da. `require("@verificrca/sdk")` și `import` funcționează amândouă, cu tipuri pentru fiecare.
-
-### Trebuie să știu Effect?
-
-Nu. Effect e folosit intern pentru scheme, validare și reîncercări. Metodele publice întorc `Promise`, iar erorile sunt clase JavaScript obișnuite.
 
 ### Există SDK pentru PHP sau Python?
 
