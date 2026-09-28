@@ -1,0 +1,15 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "name": "@verificrca/sdk",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "validation": { "notExported": false, "invalidLink": true, "notDocumented": true },
+  "requiredToBeDocumented": [
+    "Class", "Constructor", "Method", "Property", "Function", "Variable", "Interface", "TypeAlias", "Accessor", "Enum"
+  ],
+  "treatWarningsAsErrors": true
+}
