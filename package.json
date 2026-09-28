@@ -83,7 +83,8 @@
     "check:exports": "attw --pack .",
     "prepublishOnly": "pnpm typecheck && pnpm docs:check && pnpm test && pnpm build",
     "docs": "typedoc",
-    "docs:check": "typedoc --emit none"
+    "docs:check": "typedoc --emit none",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts"
   },
   "dependencies": {
     "effect": "^3.22.2"

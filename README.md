@@ -417,6 +417,22 @@ Urmează. Până atunci, [documentația API](https://www.verificrca.ro/api-acces
 - [Monitorizare flote auto](https://www.verificrca.ro/flote)
 - [Changelog](./CHANGELOG.md)
 
+## Dezvoltare
+
+```bash
+pnpm install
+pnpm test        # teste unitare, fără rețea
+pnpm test:e2e    # teste pe API-ul real
+```
+
+Testele e2e citesc configurarea din `.env.e2e`, fișier ignorat de git. Pornești de la șablon:
+
+```bash
+cp .env.e2e.example .env.e2e
+```
+
+Fără cheie rulează doar testul de autentificare. Cu `VERIFICRCA_API_KEY` se adaugă listarea vehiculelor, care e gratuită. Verificările reale (`VERIFICRCA_E2E_VERIFICARI=1`) consumă din cotă, iar testul de flotă (`VERIFICRCA_E2E_FLOTA=1`) adaugă și șterge un vehicul. Amândouă pornesc doar dacă le activezi explicit.
+
 ## Licență
 
 [MIT](./LICENSE), © verificrca.ro
