@@ -1,0 +1,42 @@
+name: Publicare npm
+
+on:
+    push:
+        tags:
+            - "v*"
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+                  registry-url: https://registry.npmjs.org
+                  cache: pnpm
+
+            # Trusted publishing (OIDC) cere npm >= 11.5.1
+            - run: npm install -g npm@latest
+
+            - run: pnpm install --frozen-lockfile
+
+            - name: Tag-ul trebuie sa corespunda versiunii din package.json
+              run: |
+                  VERSIUNE="v$(node -p "require('./package.json').version")"
+                  if [ "$VERSIUNE" != "$GITHUB_REF_NAME" ]; then
+                      echo "Tag $GITHUB_REF_NAME diferit de versiunea din package.json ($VERSIUNE)"
+                      exit 1
+                  fi
+
+            # prepublishOnly ruleaza typecheck, docs:check, test si build
+            - run: npm publish
