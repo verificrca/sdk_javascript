@@ -1,6 +1,6 @@
 {
     "name": "@verificrca/sdk",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "SDK oficial Node.js pentru API-ul verificrca.ro: verificare RCA, ITP, rovinieta si copie conforma ARR dupa numar de inmatriculare sau serie de sasiu (VIN), plus gestionarea flotei si webhook-uri.",
     "keywords": [
         "verificrca",
